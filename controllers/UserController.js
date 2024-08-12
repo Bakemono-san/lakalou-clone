@@ -109,13 +109,13 @@ export default class UserController {
     const user = await UserModel.findOne({ email });
 
     if (!user) {
-      return res.status(401).json({ error: "Utilisateur inconnu" });
+      return res.status(402).json({ error: "Utilisateur inconnu" });
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
 
     if (!isValidPassword) {
-      return res.status(401).json({ error: "Mot de passe incorrect" });
+      return res.status(403).json({ error: "Mot de passe incorrect" });
     }
 
     const token = jwt.sign({ userID: user._id }, process.env.TokenKey);
