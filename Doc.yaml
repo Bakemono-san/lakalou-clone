@@ -421,6 +421,11 @@ paths:
           description: User logged in successfully
         '401':
           description: Invalid credentials
+        '402':
+          description: Utilisateur inconnu
+        '403':
+          description: Mot de passe incorrect
+        
           
   /logout:
     post:
